@@ -1,0 +1,11 @@
+Modeller.automodel import*
+#overide the regular LoopModel class to select own loops class MyLoop (LoopModel):
+# This routine picks the residues to be refined by loop modelling def select loop atoms(self) :
+# one loop from residues x to x inclusive return Selection (self.residue_range (‘x:’, ‘x’))
+Env = Environ()
+# build 5 loop models from  4W4O_1_1.pdb, and assess each one with DOPE
+A = MyLoop (env, inimodel=’../step6_fit/4W4O_1_1.pdb’,
+ 		Sequence= ‘4W4O’, loop_assess_methods=assess.DOPE)
+a.loop.starting_model = 1
+a.loop.ending_model = 5
+a.make()
